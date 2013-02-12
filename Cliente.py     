@@ -1,4 +1,4 @@
-'''
+''' 
 LABORATORIO 2
 
 Diseniar, implementar, comprobar experimentalmente y
@@ -9,26 +9,34 @@ Cada quien define que en si es el proposito de su
 protocolo
 Python, C, Ruby o Java de preferencia
 
-Simulacion de DHCP
+SIMULACION DE PROTOCOLO DHCP
 '''
+
 import socket
 import time
+import sys
 
- 
-UDP_IP = "127.0.0.1"
-UDP_PORT = 5005
-MESSAGE = "IP request!"
- 
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
 
-#print "UDP target IP:", UDP_IP
-#print "UDP target port:", UDP_PORT
-print "message:", MESSAGE
+#Crear el socket UDP
+try: 
+	miSocket =socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM) # UDP
-sock.sendto(MESSAGE, (UDP_IP, UDP_PORT))
-  
-#sock.bind((UDP_IP, UDP_PORT))
-data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
+except socket.error:
+	print "Error al crear el socket..."
+	sys.exit() #Cerrar el programa en caso de error en creacion del socket
 
-sock
+ip = "127.0.0.1"
+puerto = 9999
+
+mensaje = "ip request"
+#Enviar el mensaje al server de la peticion de direccion ip
+miSocket.sendto(mensaje, (ip, puerto))
+print "IP request enviada"
+
+time.sleep(3)
+#Recibir informacion
+informacion = miSocket.recvfrom(1024)
+
+informacion1 = informacion[0]
+informacion2 = informacion[1]
+print "La ip que me asignaron es: ", informacion1
