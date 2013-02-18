@@ -1,0 +1,114 @@
+<!doctype html> 
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <title>Telecomunicaciones Triana</title>
+  <style>
+    html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    }
+
+    #mapa {
+    height: 100%;
+    }
+    
+    @media print {
+    html, body {
+    height: auto;
+    }
+
+    #mapa {
+    height: 650px;
+    }
+}
+  </style>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  <script type="text/javascript">
+    var m;
+    function init() {
+    m = new google.maps.Map(document.getElementById("mapa"));
+    m.setZoom(19);
+    m.setMapTypeId(google.maps.MapTypeId.HYBRID);
+    var x = 25.664370//25.741991 ... esto controla el eje y del mapa
+    var y = -100.18589 //Esto controla el eje x del mapa
+    var pos = new google.maps.LatLng(x, y);
+    m.setCenter(pos);
+    var conf = {
+    strokeColor: "#FFFF00",
+    strokeOpacity: 1,
+    strokeWeight: 3,
+    fillColor: "#0000FF",  	//Azul corresponde a mi accessPoint, por eso esta en 100% de señal, -55dBm
+    fillOpacity: 0.7,
+    map: m,
+    center: pos,
+    radius: 30
+    };
+    c2 = new google.maps.Circle(conf);
+    var conf2 = {
+    strokeColor: "#FF0000",
+    strokeOpacity: 0.63,			//Obtenido por: (100*35)/55
+    strokeWeight: 3,			
+    fillColor: "#FF0000",		//Rojo, corresponde a INFINITUM3383 -75dBm
+    fillOpacity: 0.4,
+    map: m,
+    center: new google.maps.LatLng(25.6644, -100.1857),
+    radius: 30
+    };
+    c2 = new google.maps.Circle(conf2);
+    google.maps.event.addListener(m, "click", function(event) { alert("Hola"); });
+	
+	c3 = new google.maps.Circle(conf);
+    var conf3 = {
+    strokeColor: "#00FF00",
+    strokeOpacity: 0.58,			//Obtenido por: (100*32)/55
+    strokeWeight: 3,			//Verde corresponde a InterCable828546 , -78dBm
+    fillColor: "#00FF00",
+    fillOpacity: 0.4,
+    map: m,
+    center: new google.maps.LatLng(25.6644, -100.1862),
+    radius: 30
+    };
+    c3 = new google.maps.Circle(conf3);
+    google.maps.event.addListener(m, "click", function(event) { alert("Hola"); });
+	
+	//Para el 4 circulo
+	c4 = new google.maps.Circle(conf);
+    var conf4 = {
+    strokeColor: "#000000",
+    strokeOpacity: 0.6,			//Obtenido por (100*33)/55
+    strokeWeight: 3,
+    fillColor: "#FFFF00",		//Amarillo corresponde a INFINITUM8FCFE3, -77dBm
+    fillOpacity: 0.4,
+    map: m,
+    center: new google.maps.LatLng(25.66428, -100.18618),
+    radius: 30
+    };
+    c4 = new google.maps.Circle(conf4);
+    google.maps.event.addListener(m, "click", function(event) { alert("Hola"); });
+    
+	//Para el 5 circulo
+	c5 = new google.maps.Circle(conf);
+    var conf5 = {
+    strokeColor: "#4455AA",
+    strokeOpacity: 0.71,
+    strokeWeight: 3,
+    fillColor: "#4455AA",  //Morado Corresponde a InterCable5189 -71dBm
+    fillOpacity: 0.4,
+    map: m,
+    center: new google.maps.LatLng(25.66425, -100.1858),
+    radius: 30
+    };
+    c5 = new google.maps.Circle(conf5);
+    google.maps.event.addListener(m, "click", function(event) { alert("Hola"); });
+	}
+	
+  </script>
+</head>
+<body onload="init()">
+  <div id="mapa" width="600" height="400"></div>
+</body>
+</html>
+
